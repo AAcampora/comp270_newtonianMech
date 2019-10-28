@@ -27,7 +27,27 @@ float Controller::calculateShotSpeed(const Vector2& tankPos, const Vector2& enem
 	//shootspeed u = squareroot x * g / sin2 theta
   	float u = sqrt(xg / sin2Theta);
 
-	return u;
+	//part 2// calculate y
+
+
+	//so to compute y, we have y = uy * t - gt2^2 /2
+	//in this case our t = y/uSinTheta
+	//through derivation, we arrive at the conclusion that u = squareroot of gy/2*SinTheta
+
+	//compute this only if y is not equal 
+	if ((enemyPos - tankPos).y != 0)
+	{
+ 		float y = fabs(enemyPos.y - tankPos.y);
+
+ 		float gy = y * gravity;
+
+		float u2 = sqrt(gy /3* thetaSin );
+
+		//u += u2;
+		//tried to make it work but my formula faults
+	}
+
+ 	return u;
 }
 
 // Calculate the shot angle to hit the target, given the following information.
